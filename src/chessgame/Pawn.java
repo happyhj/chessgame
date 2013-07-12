@@ -1,11 +1,15 @@
 package chessgame;
 
 public class Pawn {
+	String color;
+
+	public Pawn(String color) {
+		this.color = color;
+	}
 
 	public String getColor() {
-		// TODO Auto-generated method stub
-		String defaultColor =  "white";
-		return defaultColor;
+
+		return this.color;
 	}
 
 }
