@@ -1,6 +1,9 @@
 package chessgame;
 
 public class Pawn {
+	final String black = "black";
+	final String white = "white";
+	
 	String color;
 
 	public Pawn(String color) {
