@@ -1,13 +1,13 @@
-package chess;
+package pieces;
 
 /**
  * 두 색을 가진 말이다.
  * @author kimheejae
  */
 public class Pawn {
-// static 이 왜 들어가나?
-	final static String black = "black";
-	final static String white = "white";
+
+	public final static String black = "black";
+	public final static String white = "white";
 	
 	String color;
 	

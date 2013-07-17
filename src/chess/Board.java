@@ -2,6 +2,8 @@ package chess;
 
 import java.util.ArrayList;
 
+import pieces.Pawn;
+
 /**
  * 말이 올라가는 보드이다.
  * @author kimheejae
