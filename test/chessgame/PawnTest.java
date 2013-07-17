@@ -22,4 +22,8 @@ public class PawnTest extends TestCase {
 		String wPawnColor = wPawn.color;
 		assertEquals("white", wPawnColor);
 	}
+	
+	public void testBoardClass() throws Exception {
+		Board myBoard = new Board();
+	}
 }
