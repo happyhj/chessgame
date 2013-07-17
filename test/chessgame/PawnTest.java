@@ -16,4 +16,10 @@ public class PawnTest extends TestCase {
 		System.out.println(bPawn.getColor());
 		
 	}
+	
+	public void testConstructorWithoutParameter() throws Exception {
+		Pawn wPawn = new Pawn();
+		String wPawnColor = wPawn.color;
+		assertEquals("white", wPawnColor);
+	}
 }
