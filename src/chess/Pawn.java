@@ -1,4 +1,4 @@
-package chessgame;
+package chess;
 
 /**
  * 두 색을 가진 말이다.

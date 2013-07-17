@@ -1,4 +1,4 @@
-package chessgame;
+package chess;
 
 import java.util.ArrayList;
 
@@ -48,6 +48,5 @@ public class PawnTest extends TestCase {
 		assertEquals(true,pawnList.contains(wPawn));
 		assertEquals(true,pawnList.contains(bPawn));
 		assertEquals(false,pawnList.contains(bPawn2));
-
 	}
 }
