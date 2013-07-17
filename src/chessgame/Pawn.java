@@ -1,8 +1,9 @@
 package chessgame;
 
 public class Pawn {
-	final String black = "black";
-	final String white = "white";
+// static 이 왜 들어가나?
+	final static String black = "black";
+	final static String white = "white";
 	
 	String color;
 
