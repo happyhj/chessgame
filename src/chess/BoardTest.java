@@ -31,4 +31,17 @@ public class BoardTest extends TestCase {
 		assertEquals(true,pawnList.contains(bPawn));
 		assertEquals(false,pawnList.contains(bPawn2));
 	}
+	public void testAddOnlyPawns() throws Exception {
+		Board myBoard = new Board();
+		Pawn wPawn = new Pawn(Pawn.white);		
+		Pawn bPawn = new Pawn(Pawn.black);	
+		Integer num1 = new Integer("7");	
+
+		myBoard.addPawn(wPawn);
+		myBoard.addPawn(bPawn);	
+		myBoard.addPawn(num1);		
+		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
+		assertEquals(false,pawnList.contains(num1));
+		
+	}
 }
