@@ -12,8 +12,8 @@ public class BoardTest extends TestCase {
 	
 	public void setUp() {
 		myBoard = new Board();
-		bPawn = new Pawn(Pawn.black);		
-		wPawn = new Pawn(Pawn.white);		
+		bPawn = new Pawn(Pawn.BLACK);		
+		wPawn = new Pawn(Pawn.WHITE);		
 	}
 	
 	public void testBoardClass() throws Exception {
@@ -24,7 +24,7 @@ public class BoardTest extends TestCase {
 		assertEquals(2, myBoard.getNumberOfPawns());
 	}
 	public void testGetPawnsList() throws Exception {	
-		Pawn bPawn2 = new Pawn(Pawn.black);	
+		Pawn bPawn2 = new Pawn(Pawn.BLACK);	
 
 		myBoard.addPawn(wPawn);
 		myBoard.addPawn(bPawn);

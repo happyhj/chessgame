@@ -6,8 +6,8 @@ package pieces;
  */
 public class Pawn {
 
-	public final static String black = "black";
-	public final static String white = "white";
+	public final static String BLACK = "black";
+	public final static String WHITE = "white";
 	
 	String color;
 	
@@ -32,6 +32,15 @@ public class Pawn {
 	public String getColor() {
 
 		return this.color;
+	}
+
+	public char print() {
+		if(color==BLACK) {
+			return 'P';
+		} else if (color==WHITE) {
+			return 'p';
+		}
+		return '.';
 	}
 
 }

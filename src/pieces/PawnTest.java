@@ -24,4 +24,14 @@ public class PawnTest extends TestCase {
 		String wPawnColor = wPawn.color;
 		assertEquals("white", wPawnColor);
 	}
+	
+	/**
+	 * 연습문제 3-3
+	 * pawn의 색에 따라 P나 p를 반환하는 print 인스턴스 메서드를 만들어 주었다. ^^*
+	 * @throws Exception
+	 */
+	public void testPrintPawnExpression() throws Exception {
+		Pawn wPawn = new Pawn();
+		System.out.println(wPawn.print());
+	}
 }
