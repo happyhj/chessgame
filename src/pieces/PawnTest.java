@@ -15,7 +15,7 @@ public class PawnTest extends TestCase {
 		final String bPawnColor = "black";
 		
 		Pawn bPawn = new Pawn(bPawnColor);
-		System.out.println(bPawn.getColor());
+//		System.out.println(bPawn.getColor());
 		
 	}
 	
