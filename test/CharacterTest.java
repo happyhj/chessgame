@@ -23,4 +23,28 @@ public class CharacterTest extends TestCase {
 		assertEquals(true, Character.isWhitespace('\t'));
 		assertEquals(true, Character.isWhitespace(' '));
 	}
+	
+	/**
+	 * 연습문제 3-2 
+	 * 자바의 식별자로 사용가능한 문자의 조건을 첫글자와 그 이외의 글자로 나누어
+	 * 알려주는 API가 있었다.
+	 * Character.isJavaIdentifierStart()
+	 * Character.isJavaIdentifierPart()
+	 * @throws Exception
+	 */
+	public void testIdentifier() throws Exception {
+		assertEquals(false,Character.isJavaIdentifierStart('1'));
+		assertEquals(true,Character.isJavaIdentifierPart('1'));
+
+		assertEquals(false,Character.isJavaIdentifierStart('^'));
+		assertEquals(false,Character.isJavaIdentifierPart('^'));
+
+		assertEquals(true,Character.isJavaIdentifierStart('$'));
+		assertEquals(true,Character.isJavaIdentifierStart('_'));
+		assertEquals(true,Character.isJavaIdentifierPart('$'));
+		assertEquals(true,Character.isJavaIdentifierPart('_'));
+
+		assertEquals(false,Character.isJavaIdentifierStart(' '));
+		assertEquals(false,Character.isJavaIdentifierPart(' '));	
+	}
 }
