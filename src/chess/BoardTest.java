@@ -40,6 +40,9 @@ public class BoardTest extends TestCase {
 		myBoard.addPawn(bPawn);	
 		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
 		assertEquals(false,pawnList.contains(num1));
-		
+	}
+	
+	public void testCreate() throws Exception {
+		myBoard.initialize();
 	}
 }
