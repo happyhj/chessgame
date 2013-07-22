@@ -28,21 +28,36 @@ public class BoardTest extends TestCase {
 
 		myBoard.addPawn(wPawn);
 		myBoard.addPawn(bPawn);
+		
 		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
 		assertEquals(true,pawnList.contains(wPawn));
 		assertEquals(true,pawnList.contains(bPawn));
 		assertEquals(false,pawnList.contains(bPawn2));
 	}
+	
 	public void testAddOnlyPawns() throws Exception {
 		Integer num1 = new Integer("7");	
 
 		myBoard.addPawn(wPawn);
 		myBoard.addPawn(bPawn);	
 		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
-		assertEquals(false,pawnList.contains(num1));
+		for(int i=0;i<8;i++) {
+			assertEquals(false,pawnList.contains(num1));
+		}
 	}
 	
 	public void testCreate() throws Exception {
 		myBoard.initialize();
+		String test = "";
+		test = test + "........"+Board.NEWLINE;
+		test = test + "PPPPPPPP"+Board.NEWLINE;
+		test = test + "........"+Board.NEWLINE;
+		test = test + "........"+Board.NEWLINE;
+		test = test + "........"+Board.NEWLINE;
+		test = test + "........"+Board.NEWLINE;
+		test = test + "pppppppp"+Board.NEWLINE;
+		test = test + "........";
+			
+		assertEquals(test, myBoard.getBoardString());
 	}
 }
