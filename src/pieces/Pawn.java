@@ -8,8 +8,10 @@ public class Pawn {
 
 	public final static String BLACK = "black";
 	public final static String WHITE = "white";
+	public final static String EMPTY = "empty";
 	
-	String color;
+	private String color;
+	private char tag;
 	
 	/**
 	 * 색 문자열을 받아 해당색의 말을 만드는 생성자
@@ -17,13 +19,24 @@ public class Pawn {
 	 */
 	public Pawn(String color) {
 		this.color = color;
+		if(color == BLACK) {
+			tag = 'P';
+		} else if(color == WHITE) {
+			tag = 'p';
+		} else if(color == EMPTY) {
+			tag = '.';
+		} else {
+			System.out.println("올바른 인자가 아닙니다.(black,white,empty 중 하나) Empty Pawn을 생성합니다.");
+			tag = '.';
+		}
 	}
 
 	/**
-	 * 기본으로 흰색말을 생성하는 생성자
+	 * 기본으로 빈 폰을 생성하는 생성자
 	 */
 	public Pawn() {
-		color = "white";
+		color = EMPTY;
+		tag = '.';
 	}
 
 	/**
@@ -34,13 +47,15 @@ public class Pawn {
 		return this.color;
 	}
 
-	public char print() {
+	public char getTag() {
 		if(color==BLACK) {
 			return 'P';
 		} else if (color==WHITE) {
 			return 'p';
-		}
-		return '.';
+		} else if (color==EMPTY) {
+			return '.';
+		} else 
+			return '.';
 	}
 
 }

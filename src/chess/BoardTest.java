@@ -16,38 +16,34 @@ public class BoardTest extends TestCase {
 		wPawn = new Pawn(Pawn.WHITE);		
 	}
 	
+	/**
+	 * 보드에 초기화 시 들어간 졸의 수를 받아온다.
+	 * @throws Exception
+	 */
 	public void testBoardClass() throws Exception {
-		assertEquals(0, myBoard.getNumberOfPawns());
-		myBoard.addPawn(wPawn);
-		assertEquals(1, myBoard.getNumberOfPawns());
-		myBoard.addPawn(bPawn);
-		assertEquals(2, myBoard.getNumberOfPawns());
+		assertEquals(16, myBoard.getNumberOfPawns());
 	}
+	
+	/**
+	 * 생성자를 통해 동적으로 생성된 Pawn 인스턴스를 추가하므로 
+	 * 동일한 속성값을 지닌 Pawn을 지녔냐고 물어도
+	 * 레퍼런스가 없으므로 false를 반납한다.
+	 * @throws Exception
+	 */
 	public void testGetPawnsList() throws Exception {	
 		Pawn bPawn2 = new Pawn(Pawn.BLACK);	
-
-		myBoard.addPawn(wPawn);
-		myBoard.addPawn(bPawn);
 		
 		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
-		assertEquals(true,pawnList.contains(wPawn));
-		assertEquals(true,pawnList.contains(bPawn));
+		assertEquals(false,pawnList.contains(wPawn));
+		assertEquals(false,pawnList.contains(bPawn));
 		assertEquals(false,pawnList.contains(bPawn2));
 	}
 	
-	public void testAddOnlyPawns() throws Exception {
-		Integer num1 = new Integer("7");	
-
-		myBoard.addPawn(wPawn);
-		myBoard.addPawn(bPawn);	
-		ArrayList<Pawn> pawnList = myBoard.getPawnsList();
-		for(int i=0;i<8;i++) {
-			assertEquals(false,pawnList.contains(num1));
-		}
-	}
-	
-	public void testCreate() throws Exception {
-		myBoard.initialize();
+	/**
+	 * 체스보드의 상황을 보여주는 문자열을 받아온다.
+	 * @throws Exception
+	 */
+	public void testInitAndBoardString() throws Exception {
 		String test = "";
 		test = test + "........"+Board.NEWLINE;
 		test = test + "PPPPPPPP"+Board.NEWLINE;
@@ -56,7 +52,7 @@ public class BoardTest extends TestCase {
 		test = test + "........"+Board.NEWLINE;
 		test = test + "........"+Board.NEWLINE;
 		test = test + "pppppppp"+Board.NEWLINE;
-		test = test + "........";
+		test = test + "........"+Board.NEWLINE;
 			
 		assertEquals(test, myBoard.getBoardString());
 	}

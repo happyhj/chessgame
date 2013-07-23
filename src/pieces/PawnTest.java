@@ -5,24 +5,21 @@ import java.util.ArrayList;
 import junit.framework.TestCase;
 
 public class PawnTest extends TestCase {
-	public void testcreate() throws Exception {
-		final String wPawnColor = "white";
-		
-		Pawn wPawn = new Pawn(wPawnColor);
-		String myPawnColor = wPawn.getColor();
-		assertEquals(wPawnColor, myPawnColor);
-		
-		final String bPawnColor = "black";
-		
-		Pawn bPawn = new Pawn(bPawnColor);
-//		System.out.println(bPawn.getColor());
-		
+	public void testCreate() throws Exception {	
+		Pawn myPawn = new Pawn(Pawn.WHITE);
+		assertEquals(Pawn.WHITE, myPawn.getColor());
+		myPawn = new Pawn(Pawn.BLACK);	
+		assertEquals(Pawn.BLACK, myPawn.getColor());
 	}
 	
+	/**
+	 * 처음에는 인자없는 생성자가 흰색폰을 생성하게 하였지만 
+	 * 나중에 empty 폰이 필요해 졌으므로 인자없이 생성 시 "empty" 색을 가진 폰이 생성되도록 하였다.
+	 * @throws Exception
+	 */
 	public void testConstructorWithoutParameter() throws Exception {
-		Pawn wPawn = new Pawn();
-		String wPawnColor = wPawn.color;
-		assertEquals("white", wPawnColor);
+		assertEquals("empty", new Pawn().getColor());
+		assertEquals('.', new Pawn().getTag());
 	}
 	
 	/**
@@ -31,7 +28,9 @@ public class PawnTest extends TestCase {
 	 * @throws Exception
 	 */
 	public void testPrintPawnExpression() throws Exception {
-		Pawn wPawn = new Pawn();
-		System.out.println(wPawn.print());
+		assertEquals('.',new Pawn().getTag());
+		assertEquals('p',new Pawn(Pawn.WHITE).getTag());
+		assertEquals('P',new Pawn(Pawn.BLACK).getTag());
 	}
+
 }
