@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import pieces.Pawn;
 import junit.framework.TestCase;
+import static util.StringUtil.NEWLINE;
 
 public class BoardTest extends TestCase {
 	private Board myBoard;
@@ -45,14 +46,14 @@ public class BoardTest extends TestCase {
 	 */
 	public void testInitAndBoardString() throws Exception {
 		String test = "";
-		test = test + "........"+Board.NEWLINE;
-		test = test + "PPPPPPPP"+Board.NEWLINE;
-		test = test + "........"+Board.NEWLINE;
-		test = test + "........"+Board.NEWLINE;
-		test = test + "........"+Board.NEWLINE;
-		test = test + "........"+Board.NEWLINE;
-		test = test + "pppppppp"+Board.NEWLINE;
-		test = test + "........"+Board.NEWLINE;
+		test = test + "........"+NEWLINE;
+		test = test + "PPPPPPPP"+NEWLINE;
+		test = test + "........"+NEWLINE;
+		test = test + "........"+NEWLINE;
+		test = test + "........"+NEWLINE;
+		test = test + "........"+NEWLINE;
+		test = test + "pppppppp"+NEWLINE;
+		test = test + "........"+NEWLINE;
 			
 		assertEquals(test, myBoard.getBoardString());
 	}

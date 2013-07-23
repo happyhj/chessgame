@@ -12,6 +12,14 @@ public class Pawn {
 	
 	private String color;
 	private char tag;
+
+	/**
+	 * 기본으로 빈 폰을 생성하는 생성자
+	 */
+	public Pawn() {
+		color = EMPTY;
+		tag = '.';
+	}	
 	
 	/**
 	 * 색 문자열을 받아 해당색의 말을 만드는 생성자
@@ -32,14 +40,6 @@ public class Pawn {
 	}
 
 	/**
-	 * 기본으로 빈 폰을 생성하는 생성자
-	 */
-	public Pawn() {
-		color = EMPTY;
-		tag = '.';
-	}
-
-	/**
 	 * @return 말의 색을 반환
 	 */
 	public String getColor() {
@@ -47,6 +47,9 @@ public class Pawn {
 		return this.color;
 	}
 
+	/**
+	 * @return 말을 표현하는 문자를 반환
+	 */
 	public char getTag() {
 		if(color==BLACK) {
 			return 'P';

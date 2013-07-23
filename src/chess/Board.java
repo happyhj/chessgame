@@ -3,19 +3,15 @@ package chess;
 import java.util.ArrayList;
 
 import pieces.Pawn;
-
+import static util.StringUtil.NEWLINE;
 /**
  * 말이 올라가는 보드이다.
  * @author kimheejae + leegunhee
  */
 public class Board {
 
-//	private ArrayList<ArrayList<Pawn>> pawns = new ArrayList<ArrayList<Pawn>>();
-	final static String NEWLINE = System.getProperty("line.separator");
-	final static int numberOfRowInBoard = 8;
-	private ArrayList<Row> board = new ArrayList<Row>();
-	
-	
+	static final int numberOfRowsInBoard = 8;
+	private ArrayList<Row> board = new ArrayList<Row>();	
 	
 	public Board() {
 		initialize();
@@ -51,12 +47,12 @@ public class Board {
 	 */
 	public void initialize() {
 		// 라인시작번호는 0이다.
-		for(int i=0;i<numberOfRowInBoard;i++){
+		for(int i=0;i<numberOfRowsInBoard;i++){
 			if(i==1) {
 				board.add(new Row(Pawn.WHITE));
 				continue;
 			}
-			if(i==(numberOfRowInBoard-2)) {
+			if(i==(numberOfRowsInBoard-2)) {
 				board.add(new Row(Pawn.BLACK));
 				continue;
 			}
