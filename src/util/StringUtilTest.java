@@ -1,7 +1,7 @@
 package util;
 
 import junit.framework.TestCase;
-import static util.StringUtil.NEWLINE;
+import util.StringUtil;
 
 public class StringUtilTest extends TestCase {
 	
@@ -10,8 +10,11 @@ public class StringUtilTest extends TestCase {
 	 * @throws Exception
 	 */
 	public void testNEWLINE() throws Exception {
-		assertEquals(System.getProperty("line.separator"), NEWLINE);
+		assertEquals(System.getProperty("line.separator"), StringUtil.NEWLINE);
 	}
 	
-	
+	public void testAppendNewline(String newline) throws Exception {
+		assertEquals("........"+System.getProperty("line.separator"),StringUtil.appendNewline("........"));
+		
+	}
 }

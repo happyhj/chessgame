@@ -1,54 +1,77 @@
 package chess;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
-import pieces.Pawn;
+import java.util.Arrays;
+import pieces.Pieces;
 
 public class Row {
-	
-	static final int numberOfElementsInRow = 8;
-	private ArrayList<Pawn> pawns = new ArrayList<Pawn>();
-	private int pawnCount;
-	
-	Row() {
-		initializeWithPawns();
-	}
-	
-	Row(String color) {
-		if((color==Pawn.BLACK)||(color==Pawn.WHITE))
-			initializeWithPawns(color);
-		else
-			initializeWithPawns();
-	}
-	
-	private void initializeWithPawns() {
-		for (int i=0;i<numberOfElementsInRow;i++) {
-			pawns.add(new Pawn(Pawn.EMPTY));
-		}
-	}
+	private final static ArrayList<String> SETUP_BASEORDER = new ArrayList<String>(Arrays.asList("rook","knight","bishop","queen","king","bishop","knight","rook"));		
 
-	private void initializeWithPawns(String Color) {
+	static final int numberOfElementsInRow = 8;
+	private ArrayList<Pieces> pieces = new ArrayList<Pieces>();
+	
+	private Row() {}
+	
+	/**
+	 * @param playerColor
+	 * @return  폰으로 모두 채워진 열을 반환한다.
+	 */
+	public static Row createPawnRow(String playerColor) {
+		Row pawnRow = new Row();
+		pawnRow.initializeWithPawns(playerColor);
+		return pawnRow;	
+	}
+	private void initializeWithPawns(String playerColor) {
 		for (int i=0;i<numberOfElementsInRow;i++) {
-			pawns.add(new Pawn(Color));
-			pawnCount++;
+			pieces.add(Pieces.create(playerColor,Pieces.PAWN));
 		}
 	}
 	
-	public int getNumberOfPawns() {
-		return pawnCount;
+	/**
+	 * @return Blank Piece로 채워진 열을 반환한다.
+	 */
+	public static Row createBlankRow() {
+		Row blankRow = new Row();
+		blankRow.initializeWithBlank();
+		return blankRow;		
+	}
+	private void initializeWithBlank() {
+		for (int i=0;i<numberOfElementsInRow;i++) {
+			pieces.add(Pieces.create(Pieces.BLANK,Pieces.BLANK));
+		}
 	}
 	
+	/**
+	 * @param playerColor
+	 * @return  첫번쨰열의 기본 시작셋업으로 모두 채워진 열을 반환한다.
+	 */
+	public static Row createBaseRow(String playerColor) {
+		Row baseRow = new Row();
+		baseRow.initializeWithBases(playerColor);
+		return baseRow;		
+	}
+	private void initializeWithBases(String playerColor) {
+		for (String pieceKind : SETUP_BASEORDER) {
+			pieces.add(Pieces.create(playerColor,pieceKind));
+		}
+	}
+	
+	/**
+	 * @return 열의 내용을 문자열로 반환한다.
+	 */
 	public String getRowExpression() {
 		StringBuilder builer = new StringBuilder();		
-		for (int i=0;i<numberOfElementsInRow;i++) {
-		    builer.append(pawns.get(i).getTag());
+		for (Pieces piece: pieces) {
+		    builer.append(piece.getCharExpression());
 		}
 		return builer.toString();
 	}
 
-	public ArrayList<Pawn> getPawnList() {
-		return pawns;
+	/**
+	 * @return 열의 내용을 Piece 인스턴스의 ArrayList객체로 반환한다.
+	 */
+	public ArrayList<Pieces> getPiecesList() {
+		return pieces;
 	}
 	
 }

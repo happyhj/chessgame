@@ -6,18 +6,19 @@ import java.util.Arrays;
 public class Pieces {
 	public final static String PLAYER_BLACK = "black";			
 	public final static String PLAYER_WHITE = "white";			
-	public final static String BLANK = "blank";			
-
+	public final static String BLANK = "blank";		
 	public final static String PAWN = "pawn";			
 	public final static String ROOK = "rook";		
 	public final static String KNIGHT = "knight";			
 	public final static String BISHOP = "bishop";	
 	public final static String QUEEN = "queen";	
 	public final static String KING = "king";	
-
+	
 	private final static ArrayList<String> PLAYER_COLOR = new ArrayList<String>(Arrays.asList("black","white"));			
 	private final static ArrayList<String> PIECE_KINDS = new ArrayList<String>(Arrays.asList("pawn","rook","knight","bishop","queen","king"));		
 	private final static char EMPTY_EXPRESSION = '.';		
+	
+	private static int pieceCounter;
 	
 	private String playerColor;
 	private String pieceKind;
@@ -33,13 +34,18 @@ public class Pieces {
 	 * @param playerColor, pieceKind
 	 */
 	public static Pieces create(String playerColor,String pieceKind) {
-
-		if(PLAYER_COLOR.contains(playerColor)&&PIECE_KINDS.contains(pieceKind))
+		if(PLAYER_COLOR.contains(playerColor)&&PIECE_KINDS.contains(pieceKind)) {
+			pieceCounter++;
 			return new Pieces(playerColor,pieceKind);
+		}
 		else
 			return new Pieces(BLANK,BLANK);
 	}
 
+	public static int getPieceCounter(){
+		return pieceCounter;
+	}
+	
 	/**
 	 * @return 말의 색을 반환
 	 */
@@ -51,12 +57,36 @@ public class Pieces {
 	 * @return 말을 표현하는 문자를 반환
 	 */
 	public char getCharExpression() {
-		char pieceInitial = pieceKind.charAt(0);
+		String tempPieceKind;
+		if(pieceKind=="knight") { 
+			tempPieceKind = "night";						
+		}
+		else {
+			tempPieceKind = pieceKind;			
+		}
+		
+		char pieceInitial = tempPieceKind.charAt(0);
 		if(playerColor==PLAYER_COLOR.get(0)) {
 			return Character.toUpperCase(pieceInitial);
 		} else if (playerColor==PLAYER_COLOR.get(1)) {
 			return Character.toLowerCase(pieceInitial);
 		} else 
 			return EMPTY_EXPRESSION;
+	}
+
+	public boolean isWhite() {
+		if(playerColor==Pieces.PLAYER_WHITE) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean isBlack() {
+		if(playerColor==Pieces.PLAYER_BLACK) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -1,7 +1,7 @@
 package chess;
 
 import junit.framework.TestCase;
-import pieces.Pawn;
+import pieces.Pieces;
 
 public class RowTest extends TestCase {
 	private Row eRow;
@@ -10,25 +10,15 @@ public class RowTest extends TestCase {
 	
 	@Override
 	protected void setUp() throws Exception {
-		eRow = new Row();
-		wRow = new Row(Pawn.WHITE);
-		bRow = new Row(Pawn.BLACK);
-	}
-
-	/**
-	 * Row 클래스의 인자를 넣은
-	 * 
-	 * @throws Exception
-	 */
-	public void testInitialize() throws Exception {
-		assertEquals(0, eRow.getNumberOfPawns());
-		assertEquals(8, wRow.getNumberOfPawns());
-		assertEquals(8, bRow.getNumberOfPawns());
+		eRow = Row.createBlankRow();
+		wRow = Row.createPawnRow(Pieces.PLAYER_WHITE);
+		bRow = Row.createPawnRow(Pieces.PLAYER_BLACK);
 	}
 	
 	public void testRowExpression() throws Exception {
 		assertEquals("........", eRow.getRowExpression());
 		assertEquals("pppppppp", wRow.getRowExpression());
 		assertEquals("PPPPPPPP", bRow.getRowExpression());
+		assertEquals("RNBQKBNR", Row.createBaseRow(Pieces.PLAYER_BLACK).getRowExpression());
 	}
 }
